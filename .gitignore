@@ -6,3 +6,4 @@ pkg/
 .DS_Store
 error.log
 thoth.conf
+thoth.tmproj
