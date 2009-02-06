@@ -1,27 +1,6 @@
 <h2>Pages</h2>
 
 <%= render_template('../util/pager') %>
-<form action="<%= @form_action %>" method="post">
-	<table class="list pages" summary="List of all pages" id="page_list_table">
-	  <%= render_template('../util/table_sortheader') %>
-	  <tfoot></tfoot>
-	  <tbody>
-	    <% row = 'even' %>
-	    <% @pages.all do |page| %>
-	      <tr id="row_<%= page.id %>" class="<%= row == 'even' ? row = 'odd' : row = 'even' %>">
-			<td class="display"><input type="text" size="2" name="display_order[<%= page.id %>]" value="<%= page.display_order %>"/></td>
-	        <td class="name"><%== page.name %></td>
-	        <td class="title">
-	          <a href="<%== page.url %>"><%== page.title %></a>
-	        </td>
-	        <td class="created">
-	          <%= page.created_at(Thoth::Config.timestamp.short) %>
-	        </td>
-	        <td class="updated">
-	          <%= page.updated_at(Thoth::Config.timestamp.short) %>
-	        </td>
-	      </tr>
-	    <% end %>
 
 <form action="<%= @form_action %>" method="post">
   <table class="list pages" summary="List of all pages" id="page_list_table">
