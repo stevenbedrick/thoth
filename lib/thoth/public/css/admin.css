@@ -192,6 +192,8 @@ table.list tbody tr:hover { background: #d0dbf7; }
 table.list tbody td { border: 1px solid transparent; }
 table.list tbody tr:hover td { border: 1px solid #9ab3f7; }
 
+table.list tbody tr.main_page { font-style: italic; background: #DFC5A4;}
+
 table.list td.created,
 table.list td.updated,
 table.pages td.name { white-space: nowrap; }

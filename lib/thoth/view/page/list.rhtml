@@ -9,7 +9,7 @@
     <tbody>
       <% row = 'even' %>
       <% @pages.all do |page| %>
-        <tr id="row_<%= page.id %>" class="<%= row == 'even' ? row = 'odd' : row = 'even' %>">
+        <tr id="row_<%= page.id %>" class="<%= row == 'even' ? row = 'odd' : row = 'even' %> <%= page.name == @main_page_name ? 'main_page' : '' %>">
           <td class="name"><%== page.name %></td>
           <td class="title">
             <a href="<%== page.url %>"><%== page.title %></a>

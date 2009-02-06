@@ -25,7 +25,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #++
-
+require 'ruby-debug'
 module Thoth
   class PageController < Ramaze::Controller
     map       '/page'
@@ -120,6 +120,11 @@ module Thoth
         end
 
         Page.normalize_positions
+
+      end
+
+      if (Config.site.main_page_mode != :posts) 
+        @main_page_name = Config.site.main_page_mode.strip.downcase
       end
 
       page = page.to_i
