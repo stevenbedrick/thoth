@@ -25,7 +25,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #++
-
+require 'ruby-debug'
 module Thoth
   class MainController < Ramaze::Controller
     map       '/'
@@ -50,8 +50,22 @@ module Thoth
       end
 
       @title = Config.site.name
-      @posts = Post.recent
-      @pager = pager(@posts, Rs(:archive, '%s'))
+
+      Ramaze::Log.info("main_page_mode is: #{Config.site.main_page_mode}")
+      if (Config.site.main_page_mode != :posts) and (@page = Page[:name => Config.site.main_page_mode.strip.downcase])
+#      if Config.site.main_page_mode.is_a? String && @page = Page[:name => Config.site.main_page_mode.strip.downcase]
+        @show_page_edit = true
+        Ramaze::Log.info("in page mode...")
+      else      
+        @posts = Post.recent
+        @pager = pager(@posts, Rs(:archive, '%s'))
+        Ramaze::Log.info("in post mode...")
+      end
+      
+#      Debugger.start
+#      debugger
+      
+      
     end
 
     def atom

@@ -50,6 +50,13 @@ Configuration.for("thoth_production") {
     # engines to improve the indexing of your site (and possibly your PageRank).
     #
     # enable_sitemap true
+	#
+	# What the main page should display: a list of recent posts, or the contents of a named page. 
+	# Values should be either :posts or the name of a page to display. If the named page cannot be found,
+	# the main page will default to will be :posts.
+	#
+	# main_page_mode :posts
+	#
 
   }
 

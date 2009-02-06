@@ -40,6 +40,9 @@ module Thoth
             url  "http://localhost:7000/"
             enable_comments true
             enable_sitemap  true
+            
+            main_page_mode :posts
+            
           }
 
           admin {
