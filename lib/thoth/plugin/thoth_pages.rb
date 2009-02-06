@@ -38,7 +38,7 @@ module Thoth; module Plugin
   
     class << self
       
-      def list_of_pages(sort_by=:display_order)
+      def list_of_pages(sort_by=:position)
       
         return Page.order(sort_by)
         
