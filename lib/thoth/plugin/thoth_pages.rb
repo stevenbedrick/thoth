@@ -38,9 +38,14 @@ module Thoth; module Plugin
   
     class << self
       
-      def list_of_pages(sort_by=:position)
-      
-        return Page.order(sort_by)
+      def list_of_pages(sort_by=:position,include_home_page=true)
+
+        if not include_home_page and (Config.site.main_page_mode != :posts)
+          return Page.order(sort_by).filter(~{:name => Config.site.main_page_mode.strip.downcase})
+        else
+          return Page.order(sort_by)
+        end
+        
         
       end
     end
