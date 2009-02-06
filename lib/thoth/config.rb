@@ -62,6 +62,9 @@ module Thoth
               rating  "g"
               size    32
             }
+            
+            display_toolbar true
+            
           }
 
           media File.join(HOME_DIR, 'media')

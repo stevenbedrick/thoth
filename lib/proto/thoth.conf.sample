@@ -143,6 +143,9 @@ Configuration.for("thoth_production") {
 
     }
 
+	# Whether or not to display the toolbar (with the subtitle, link to home/archive/comments, etc.)
+	# display_toolbar true
+
   }
 
   # Absolute path to a directory where uploaded media files (images, videos,

@@ -5,6 +5,8 @@
     </a>
   </h1>
 
+<% if Thoth::Config.theme.display_toolbar %>
+
   <div id="toolbar">
     <div class="subtitle">
       <%== Thoth::Config.site.desc %>
@@ -18,6 +20,8 @@
       <% end %>
     </ul>
   </div>
+
+<% end %>
 
   <%= render_template 'admin/toolbar' %>
 </div>
