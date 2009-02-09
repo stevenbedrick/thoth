@@ -32,7 +32,7 @@ module Thoth
     layout    '/layout'
     view_root Config.theme.view, VIEW_DIR
 
-    helper      :admin, :cache, :error, :pagination
+    helper      :admin, :cache, :error, :pagination, :timeago
     deny_layout :atom, :rss, :sitemap
 
     if Config.server.enable_cache
