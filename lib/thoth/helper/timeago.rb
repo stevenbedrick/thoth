@@ -75,7 +75,7 @@ module Ramaze
             name = chunk[1]
         
             count = ((since - totaltime) / seconds).floor
-            time << "#{count} #{name}" unless count == 0
+            time << "#{count} #{pluralize(count,name)}" unless count == 0
         
             totaltime += count * seconds
           end
@@ -89,6 +89,20 @@ module Ramaze
           original.strftime(date_format)
         end
     
+      end
+      
+      private
+      
+      # ghetto-tastic word pluralization
+      # ONLY guaranteed to work for [second, minute, hour, day, week, month, year] 
+      def pluralize(n, str)
+        
+        if n > 1
+          return str + "s"
+        else
+          return str
+        end
+        
       end
   
   
