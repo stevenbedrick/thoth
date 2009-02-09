@@ -200,6 +200,8 @@ table.pages td.name { white-space: nowrap; }
 
 table.media td.size { text-align: right; }
 
+p.position_save { text-align: right; }
+
 /* -- Media ----------------------------------------------------------------- */
 fieldset.replace { padding: 0.3em 1em; }
 
