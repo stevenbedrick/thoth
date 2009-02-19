@@ -33,7 +33,7 @@ $:.uniq!
 require 'fileutils'
 require 'rubygems'
 
-gem 'ramaze', '=2009.01'
+gem 'ramaze', '=2009.02'
 
 require 'builder'
 require 'cssmin'
@@ -107,8 +107,11 @@ module Thoth
       FileUtils.mkdir(File.join(path, 'plugin'))
       FileUtils.mkdir(File.join(path, 'public'))
       FileUtils.mkdir(File.join(path, 'view'))
+      FileUtils.mkdir(File.join(path, 'tmp'))
 
+      FileUtils.cp(File.join(LIB_DIR, '..', 'proto', 'config.ru'), File.join(path, 'config.ru'))
       FileUtils.cp(File.join(LIB_DIR, '..', 'proto', 'thoth.conf.sample'), File.join(path, 'thoth.conf'))
+
       File.chmod(0750, File.join(path, 'log'))
       File.chmod(0640, File.join(path, 'thoth.conf'))
     end
@@ -221,11 +224,7 @@ module Thoth
       Sequel.datetime_class = Time
 
       @db = Sequel.open(Config.db)
-
-      unless @db.test_connection
-        Ramaze::Log.error('Unable to connect to database.')
-        abort
-      end
+      @db.test_connection
 
       if trait[:sql_log]
         require 'logger'
@@ -234,7 +233,7 @@ module Thoth
 
     rescue => e
       Ramaze::Log.error("Unable to connect to database: #{e}")
-      abort
+      exit(1)
     end
 
     # Restarts the running Thoth daemon (if any).
